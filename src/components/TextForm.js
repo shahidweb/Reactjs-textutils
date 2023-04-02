@@ -16,7 +16,10 @@ export default function TextForm(props) {
         else if (type === 'lowercase') {
             setText(text.toUpperCase());
         }
-        else  setText('');
+        else  {
+            setText('');
+            countWords('')
+        }
     }
 
     const countWords = (str) => {
