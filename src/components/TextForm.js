@@ -16,6 +16,10 @@ export default function TextForm(props) {
         else if (type === 'lowercase') {
             setText(text.toUpperCase());
         }
+        else if(type === 'copy'){
+            document.getElementById('textBox').select();
+            navigator.clipboard.writeText(text)
+        }
         else  {
             setText('');
             countWords('')
@@ -29,12 +33,13 @@ export default function TextForm(props) {
     }
 
     return (
-        <>
+        <div className={`text-${props.mode === 'light'? 'black':'white'}`}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control mb-2" value={text} onChange={onChangeEvent} rows="8"></textarea>
+                <textarea className="form-control mb-2" id="textBox" value={text} onChange={onChangeEvent} rows="8"></textarea>
                 <button className="btn btn-primary" onClick={(event)=> handleEvent(event, 'uppercase')}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'lowercase')}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'copy')}>Copy Text</button>
                 <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'clear')}>Clear</button>
             </div>
             <div className="my-3">
@@ -44,6 +49,6 @@ export default function TextForm(props) {
                 <h3>Preview</h3>
                 <p>{text}</p>
             </div>
-        </>
+        </div>
     )
 }
