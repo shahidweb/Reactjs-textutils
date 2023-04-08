@@ -12,17 +12,26 @@ export default function TextForm(props) {
     const handleEvent = (event, type) => {
         if (type === 'uppercase') {
             setText(text.toUpperCase());
+            props.showAlert("success", "Converted to uppercase!")
         }
         else if (type === 'lowercase') {
             setText(text.toUpperCase());
+            props.showAlert("success", "Converted to lowercase!")
         }
         else if(type === 'copy'){
             document.getElementById('textBox').select();
             navigator.clipboard.writeText(text)
+            props.showAlert("success", "Copy to clipboard!")
+        }
+        else if(type === 'space'){
+            let newText = text.split(/[ ]+/);
+            setText(newText.join(" "));
+            props.showAlert("success", "Extra spaces removed!")
         }
         else  {
             setText('');
             countWords('')
+            props.showAlert("danger", "Clear all text!")
         }
     }
 
@@ -40,6 +49,7 @@ export default function TextForm(props) {
                 <button className="btn btn-primary" onClick={(event)=> handleEvent(event, 'uppercase')}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'lowercase')}>Convert to LowerCase</button>
                 <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'copy')}>Copy Text</button>
+                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'copy')}>Remove Extra Space</button>
                 <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'clear')}>Clear</button>
             </div>
             <div className="my-3">
