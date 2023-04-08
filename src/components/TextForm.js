@@ -18,17 +18,20 @@ export default function TextForm(props) {
             setText(text.toUpperCase());
             props.showAlert("success", "Converted to lowercase!")
         }
-        else if(type === 'copy'){
+        else if (type === 'copy') {
             document.getElementById('textBox').select();
-            navigator.clipboard.writeText(text)
+            navigator.clipboard.writeText(text);
+            setTimeout(() => {
+                document.getSelection().removeAllRanges();
+            }, 300);
             props.showAlert("success", "Copy to clipboard!")
         }
-        else if(type === 'space'){
+        else if (type === 'space') {
             let newText = text.split(/[ ]+/);
             setText(newText.join(" "));
             props.showAlert("success", "Extra spaces removed!")
         }
-        else  {
+        else {
             setText('');
             countWords('')
             props.showAlert("danger", "Clear all text!")
@@ -42,15 +45,15 @@ export default function TextForm(props) {
     }
 
     return (
-        <div className={`text-${props.mode === 'light'? 'black':'white'}`}>
+        <div className={`text-${props.mode === 'light' ? 'black' : 'white'}`}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 <textarea className="form-control mb-2" id="textBox" value={text} onChange={onChangeEvent} rows="8"></textarea>
-                <button className="btn btn-primary" onClick={(event)=> handleEvent(event, 'uppercase')}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'lowercase')}>Convert to LowerCase</button>
-                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'copy')}>Copy Text</button>
-                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'copy')}>Remove Extra Space</button>
-                <button className="btn btn-primary mx-3" onClick={(event)=> handleEvent(event, 'clear')}>Clear</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={(event) => handleEvent(event, 'uppercase')}>Convert to UpperCase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={(event) => handleEvent(event, 'lowercase')}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={(event) => handleEvent(event, 'copy')}>Copy Text</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={(event) => handleEvent(event, 'copy')}>Remove Extra Space</button>
+                <button className="btn btn-primary mx-1 my-1" disabled={text.length === 0} onClick={(event) => handleEvent(event, 'clear')}>Clear</button>
             </div>
             <div className="my-3">
                 <h3>Your text summary</h3>

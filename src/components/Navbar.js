@@ -23,14 +23,14 @@ export default function Navbar(props) {
               </li>
             </ul>
           </div>
-          <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'black' : 'white'}`}>
+          {/* <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'black' : 'white'}`}>
             <input className="form-check-input" id="redMode" onClick={(event) => props.toggleMode(event, "danger")} type="radio" name="mode" />
             <label className="form-check-label" htmlFor="redMode">Enable Red Mode</label>
           </div>
           <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'black' : 'white'}`}>
             <input className="form-check-input" id="greenMode" onClick={(event) => props.toggleMode(event, "success")} type="radio" name="mode" />
             <label className="form-check-label" htmlFor="greenMode">Enable Green Mode</label>
-          </div>
+          </div> */}
           <div className={`form-check mx-2 form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="lightMode" />
             <label className="form-check-label" htmlFor="lightMode">{props.mode === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}</label>

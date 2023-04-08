@@ -1,26 +1,26 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-export default function About() {
-    const [myStyle, setMyStyle]= useState({
-        color:'black',
-        backgroundColor:'white',
+export default function About(props) {
+    const [myStyle, setMyStyle] = useState({
+        color: 'black',
+        backgroundColor: 'white',
     });
 
     const [btnText, setBtnText] = useState('Enable Dark Mode');
 
-    const toggleStyle = ()=>{
-        if(myStyle.color === 'white'){
+    const toggleStyle = () => {
+        if (myStyle.color === 'white') {
             setMyStyle({
-                color:'black',
-                backgroundColor:'white',
+                color: 'black',
+                backgroundColor: 'white',
                 border: '1px solid white'
             })
             setBtnText('Enable Dark Mode')
         }
-        else{
+        else {
             setMyStyle({
-                color:'white',
-                backgroundColor:'black'
+                color: 'white',
+                backgroundColor: 'black'
             })
             setBtnText('Enable Light Mode')
         }
@@ -56,7 +56,7 @@ export default function About() {
                 </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header">
-                        <button className="accordion-button collapsed"  style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Accordion Item #3
                         </button>
                     </h2>
@@ -66,8 +66,8 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+                {/* <button className="btn btn-primary my-2 mx-3" onClick={toggleStyle}>{btnText}</button> */}
             </div>
-            <button className="btn btn-primary my-2" onClick={toggleStyle}>{btnText}</button>
         </div>
     )
 }
