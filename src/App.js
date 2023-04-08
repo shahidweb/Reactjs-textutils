@@ -13,18 +13,21 @@ function App() {
       setMode(type);
       const color = type === 'danger' ? '#6f0707': '#035203';
       document.body.style.backgroundColor = color;
-      showAlert('success', `${type} mode has been enabled`)
+      showAlert('success', `${type} mode has been enabled`);
+      document.title = `TextUtils - ${type} Mode`;
     }
     else {
       if (mode === 'light') {
         setMode('dark');
         document.body.style.backgroundColor = '#07376d';
-        showAlert('success', 'Dark mode has been enabled')
+        showAlert('success', 'Dark mode has been enabled');
+        document.title = "TextUtils - Dark Mode";
       }
       else {
         setMode('light');
         document.body.style.backgroundColor = 'white';
-        showAlert('success', 'Light mode has been enabled')
+        showAlert('success', 'Light mode has been enabled');
+        document.title = "TextUtils - Light Mode";
       }
     }
   }
