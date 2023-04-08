@@ -9,7 +9,7 @@ export default function Navbar(props) {
           <a className="navbar-brand" href="/">{props.title}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
-          </button> 
+          </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -20,12 +20,20 @@ export default function Navbar(props) {
               </li>
             </ul>
           </div>
-          <div class={`form-check form-switch text-${props.mode === 'light' ? 'dark': 'light'}`}>
-          <input class="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="toogleMode"/>
-            <label class="form-check-label" htmlFor="toogleMode">{props.mode === 'light' ? 'Enable Dark Mode': 'Enable Light Mode'}</label>
+          <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'black' : 'white'}`}>
+            <input className="form-check-input" id="redMode" onClick={(event) => props.toggleMode(event, "danger")} type="radio" name="mode" />
+            <label className="form-check-label" for="redMode">Enable Red Mode</label>
+          </div>
+          <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'black' : 'white'}`}>
+            <input className="form-check-input" id="greenMode" onClick={(event) => props.toggleMode(event, "success")} type="radio" name="mode" />
+            <label className="form-check-label" for="greenMode">Enable Green Mode</label>
+          </div>
+          <div className={`form-check mx-2 form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+            <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="lightMode" />
+            <label className="form-check-label" htmlFor="lightMode">{props.mode === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}</label>
+          </div>
         </div>
-        </div>
-       
+
       </nav>
     </>
   )

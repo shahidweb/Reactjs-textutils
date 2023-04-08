@@ -9,16 +9,24 @@ function App() {
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
-  const toggleMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#07376d';
-      showAlert('success', 'Dark mode has been enabled')
+  const toggleMode = (event, type) => {
+    if (type) {
+      setMode(type);
+      const color = type == 'danger' ? '#6f0707': '#035203';
+      document.body.style.backgroundColor = color;
+      showAlert('success', `${type} mode has been enabled`)
     }
     else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert('success', 'Light mode has been enabled')
+      if (mode === 'light') {
+        setMode('dark');
+        document.body.style.backgroundColor = '#07376d';
+        showAlert('success', 'Dark mode has been enabled')
+      }
+      else {
+        setMode('light');
+        document.body.style.backgroundColor = 'white';
+        showAlert('success', 'Light mode has been enabled')
+      }
     }
   }
   const showAlert = (type, message) => {
@@ -29,7 +37,7 @@ function App() {
 
     setTimeout(() => {
       setAlert(null)
-    }, 1500);
+    }, 2000);
   }
 
   return (
@@ -37,7 +45,7 @@ function App() {
       <Navbar title="TextUtils2" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container mt-3">
-        <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert}/>
+        <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />
         {/* <About /> */}
       </div>
     </>
