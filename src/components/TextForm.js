@@ -39,7 +39,7 @@ export default function TextForm(props) {
     }
 
     const countWords = (str) => {
-        const arr = str.split(' ');
+        const arr = str.split(/\s+/);
         const length = arr.filter(word => word !== '').length;
         setCount(length);
     }
