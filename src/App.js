@@ -1,7 +1,6 @@
 import './App.css';
 import TextForm from './components/TextForm';
 import Navbar from './components/Navbar';
-import About from './components/About';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
 
@@ -12,7 +11,7 @@ function App() {
   const toggleMode = (event, type) => {
     if (type) {
       setMode(type);
-      const color = type == 'danger' ? '#6f0707': '#035203';
+      const color = type === 'danger' ? '#6f0707': '#035203';
       document.body.style.backgroundColor = color;
       showAlert('success', `${type} mode has been enabled`)
     }
@@ -46,7 +45,6 @@ function App() {
       <Alert alert={alert} />
       <div className="container mt-3">
         <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />
-        {/* <About /> */}
       </div>
     </>
   );
